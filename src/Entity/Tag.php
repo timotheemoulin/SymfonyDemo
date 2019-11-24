@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TagRepository")
@@ -24,7 +25,7 @@ class Tag
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="tags")
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="tag")
      */
     private $articles;
 
@@ -62,7 +63,7 @@ class Tag
     {
         if (!$this->articles->contains($article)) {
             $this->articles[] = $article;
-            $article->setTags($this);
+            $article->setTag($this);
         }
 
         return $this;
@@ -73,8 +74,8 @@ class Tag
         if ($this->articles->contains($article)) {
             $this->articles->removeElement($article);
             // set the owning side to null (unless already changed)
-            if ($article->getTags() === $this) {
-                $article->setTags(null);
+            if ($article->getTag() === $this) {
+                $article->setTag(null);
             }
         }
 
