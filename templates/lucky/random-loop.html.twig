@@ -1,0 +1,16 @@
+<h1>Here is some random stuff for you</h1>
+<ul>
+    {% for random in randoms %}
+        <li>#{{ loop.index }} : {{ random }}</li>
+    {% else %}
+        <li style="color: red;">No random string generated.</li>
+    {% endfor %}
+</ul>
+<p><a href="{{ url }}">Go to the random number</a></p>
+
+<p>Use the links down there to change the number of random strings.</p>
+<ul>
+    {% for i in 1..10 %}
+        <li><a href="{{ path('app_lucky_string', {'number': i }) }}">Display {{ i }} strings</a></li>
+    {% endfor %}
+</ul>
