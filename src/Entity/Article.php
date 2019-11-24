@@ -17,12 +17,12 @@ class Article
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(name="body", type="text", nullable=true)
      */
     private $body;
 
