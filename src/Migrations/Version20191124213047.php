@@ -22,7 +22,7 @@ final class Version20191124213047 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'sqlite', 'Migration can only be executed safely on \'sqlite\'.');
 
-        $this->addSql('ALTER TABLE article ADD COLUMN title VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE article ADD COLUMN title VARCHAR(255)');
         $this->addSql('ALTER TABLE article ADD COLUMN body CLOB DEFAULT NULL');
         $this->addSql('ALTER TABLE article ADD COLUMN tag_id INTEGER DEFAULT NULL');
     }
